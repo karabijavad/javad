@@ -2,6 +2,8 @@
   tasks:
     - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
     - apt_repository: repo='ppa:neovim-ppa/unstable'
+    - apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
+    - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' state=present
     - apt: name={{item}} state=installed
       with_items:
         - build-essential
@@ -20,6 +22,7 @@
         - silversearcher-ag
         - netcat
         - nginx
+        - postgresql-9.5
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
 
