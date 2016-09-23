@@ -28,6 +28,7 @@
         - nginx
         - postgresql-9.5
         - nodejs
+        - htop
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
