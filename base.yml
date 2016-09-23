@@ -19,6 +19,7 @@
         - mosh
         - silversearcher-ag
         - netcat
+        - nginx
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
 
