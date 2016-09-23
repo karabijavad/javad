@@ -16,6 +16,7 @@
         - zsh
         - tmux
         - fonts-hack-ttf
+        - mosh
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
 
