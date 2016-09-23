@@ -20,6 +20,8 @@
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
 
+    - copy: src=./.tmux.conf dest=/home/javad/.tmux.conf owner=javad mode=0664
+
     - git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes
       become: yes
       become_user: javad
