@@ -51,4 +51,14 @@
     - file: src=/home/javad/.vimrc dest=/home/javad/.config/nvim/init.vim owner=javad state=link
 
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/home/javad/.oh-my-zsh
+      become: yes
+      become_user: javad
     - copy: src=./.zshrc dest=/home/javad/.zshrc owner=javad mode=0664
+
+    - git: repo=https://github.com/yyuu/pyenv.git dest=/home/javad/.pyenv
+      become: yes
+      become_user: javad
+    - git: repo=https://github.com/yyuu/pyenv-virtualenv.git dest=/home/javad/.pyenv/plugins/pyenv-virtualenv
+      become: yes
+      become_user: javad
+
