@@ -18,6 +18,7 @@
         - fonts-hack-ttf
         - mosh
         - silversearcher-ag
+        - netcat
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
 
