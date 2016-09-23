@@ -1,0 +1,46 @@
+- hosts: localhost
+  tasks:
+    - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
+    - apt_repository: repo='ppa:neovim-ppa/unstable'
+    - apt: name={{item}} state=installed
+      with_items:
+        - build-essential
+        - vim-nox
+        - ruby
+        - git
+        - neovim
+        - python-dev
+        - python-pip
+        - python3-dev
+        - python3-pip
+        - chromium-browser
+        - zsh
+        - tmux
+        - fonts-hack-ttf
+        - icnsutils
+        - graphicsmagick
+        - xz-utils
+
+    - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
+
+    - git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes
+      become: yes
+      become_user: javad
+    - command: "rake"
+      become: yes
+      become_user: javad
+      args:
+        chdir: "/home/javad/.vim"
+    - copy: src=./.vimrc.after dest=/home/javad/.vimrc.after owner=javad mode=0664
+    - file: path=/home/javad/.config/nvim state=directory mode=0755
+    - file: src=/home/javad/.vimrc dest=/home/javad/.config/nvim/init.vim owner=javad state=link
+
+    - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/home/javad/.oh-my-zsh
+    - copy: src=./.zshrc dest=/home/javad/.zshrc owner=javad mode=0664
+    - command: "dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font \"'Hack Regular 12'\""
+      become: yes
+      become_user: javad
+    - command: "dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-system-font false"
+      become: yes
+      become_user: javad
+
