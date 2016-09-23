@@ -17,6 +17,7 @@
         - tmux
         - fonts-hack-ttf
         - mosh
+        - silversearcher-ag
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
 
