@@ -4,6 +4,9 @@
     - apt_repository: repo='ppa:neovim-ppa/unstable'
     - apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
     - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' state=present
+    - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+    - apt_repository: repo='deb https://deb.nodesource.com/node_6.x xenial main' state=present
+    - apt_repository: repo='deb-src https://deb.nodesource.com/node_6.x xenial main' state=present
     - apt: name={{item}} state=installed
       with_items:
         - build-essential
@@ -24,6 +27,7 @@
         - netcat
         - nginx
         - postgresql-9.5
+        - nodejs
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
