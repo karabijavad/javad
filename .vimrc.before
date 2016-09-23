@@ -1,0 +1,6 @@
+call janus#disable_plugin('supertab')
+call janus#disable_plugin('tagbar')
+call janus#disable_plugin('snipmate')
+call janus#disable_plugin('nrrwrgn')
+call janus#disable_plugin('zoomwin')
+call janus#disable_plugin('vroom')

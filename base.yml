@@ -31,6 +31,7 @@
       become_user: javad
       args:
         chdir: "/home/javad/.vim"
+    - copy: src=./.vimrc.before dest=/home/javad/.vimrc.before owner=javad mode=0664
     - copy: src=./.vimrc.after dest=/home/javad/.vimrc.after owner=javad mode=0664
     - file: path=/home/javad/.config/nvim state=directory mode=0755
     - file: src=/home/javad/.vimrc dest=/home/javad/.config/nvim/init.vim owner=javad state=link
