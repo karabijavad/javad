@@ -75,4 +75,6 @@
     - git: repo=https://github.com/yyuu/pyenv-virtualenv.git dest=/home/javad/.pyenv/plugins/pyenv-virtualenv
       become: yes
       become_user: javad
-
+    - git: repo=https://github.com/mxw/vim-jsx.git dest=/home/javad/.janus/vim-jsx/
+      become: yes
+      become_user: javad

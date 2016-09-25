@@ -8,3 +8,5 @@ if executable('ag')
 endif
 
 set backupcopy=yes
+set expandtab
+set tabstop=2
