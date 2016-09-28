@@ -58,6 +58,7 @@
         - docker-engine
         - qemu-kvm
         - libvirt-bin
+        - openssh-server
 
     - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd shell=/bin/zsh
 
