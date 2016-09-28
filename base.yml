@@ -1,6 +1,7 @@
 - hosts: localhost
   tasks:
     - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
+    - apt_repository: repo='ppa:saiarcot895/myppa'
     - apt_repository: repo='ppa:neovim-ppa/unstable'
     - apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
     - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' state=present
@@ -44,6 +45,8 @@
         - xz-utils
         - libmysqlclient-dev
         - libpq-dev
+        - apt-fast
+
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
       become: yes
