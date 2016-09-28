@@ -81,3 +81,5 @@
     - git: repo=https://github.com/mxw/vim-jsx.git dest=/home/javad/.janus/vim-jsx/
       become: yes
       become_user: javad
+
+    - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
