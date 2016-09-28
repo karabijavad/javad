@@ -1,13 +1,22 @@
 - hosts: localhost
   tasks:
     - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
+
     - apt_repository: repo='ppa:saiarcot895/myppa'
+
     - apt_repository: repo='ppa:neovim-ppa/unstable'
+
     - apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
     - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' state=present
-    - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
-    - apt_repository: repo='deb https://deb.nodesource.com/node_6.x xenial main' state=present
-    - apt_repository: repo='deb-src https://deb.nodesource.com/node_6.x xenial main' state=present
+
+    - apt_key: keyserver=https://apt.dockerproject.org/gpg id=2C52609D state=present
+    - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present
+
+    - apt: >
+        upgrade=yes
+        update_cache=yes
+        cache_valid_time=3600
+
     - apt: name={{item}} state=installed
       with_items:
         - build-essential
@@ -46,8 +55,10 @@
         - libmysqlclient-dev
         - libpq-dev
         - apt-fast
+        - docker-engine
 
     - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
+
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
       become: yes
       become_user: postgres
@@ -82,4 +93,11 @@
       become: yes
       become_user: javad
 
+    - git: repo=https://github.com/creationix/nvm.git dest=/home/javad/.nvm
+      become: yes
+      become_user: javad
+
+
     - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
+
+

@@ -2,3 +2,5 @@
 if ! grep -q disable /sys/firmware/acpi/interrupts/gpe06; then
   echo "disable" > /sys/firmware/acpi/interrupts/gpe06;
 fi
+
+for x in $(find /sys/devices/ -name scaling_governor); do echo performance > $x; done;
