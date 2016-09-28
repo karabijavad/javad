@@ -5,3 +5,7 @@
         - chromium-browser
         - unity-tweak-tool
         - gnome-shell
+    - copy: src=./rc.local dest=/etc/rc.local owner=root mode='u+x'
+
+    - service: name=rc.local enabled=yes state=started
+

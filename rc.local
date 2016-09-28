@@ -1,0 +1,4 @@
+#!/bin/bash
+if ! grep -q disable /sys/firmware/acpi/interrupts/gpe06; then
+  echo "disable" > /sys/firmware/acpi/interrupts/gpe06;
+fi
