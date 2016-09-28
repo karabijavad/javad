@@ -3,4 +3,4 @@
     - apt: name={{item}} state=installed
       with_items:
         - chromium-browser
-
+        - unity-tweak-tool
