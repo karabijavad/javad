@@ -4,3 +4,4 @@
       with_items:
         - chromium-browser
         - unity-tweak-tool
+        - gnome-shell
