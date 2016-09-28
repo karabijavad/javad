@@ -56,8 +56,10 @@
         - libpq-dev
         - apt-fast
         - docker-engine
+        - qemu-kvm
+        - libvirt-bin
 
-    - user: name=javad groups=javad,adm,sudo,plugdev shell=/bin/zsh
+    - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd shell=/bin/zsh
 
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
       become: yes
@@ -103,6 +105,10 @@
     - get_url:
         url: https://github.com/docker/machine/releases/download/v0.8.0/docker-machine-Linux-x86_64
         dest: /usr/local/bin/docker-machine
+        mode: 755
+    - get_url:
+        url: https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm
+        dest: /usr/local/bin/docker-machine-driver-kvm
         mode: 755
     - pip: name=docker-compose
 
