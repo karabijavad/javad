@@ -118,7 +118,7 @@
         mode: 755
     - get_url:
         url: https://storage.googleapis.com/minikube/releases/v0.10.0/minikube-linux-amd64
-        dest: minikube
+        dest: /usr/local/bin/minikube
         mode: 755
 
 
