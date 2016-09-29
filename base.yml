@@ -60,6 +60,7 @@
         - libvirt-bin
         - openssh-server
         - dracut
+        - initramfs-tools
 
     - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd shell=/bin/zsh
 
