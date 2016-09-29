@@ -59,6 +59,7 @@
         - qemu-kvm
         - libvirt-bin
         - openssh-server
+        - dracut
 
     - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd shell=/bin/zsh
 
