@@ -59,7 +59,7 @@
         - qemu-kvm
         - libvirt-bin
 
-    - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd shell=/bin/zsh
+    - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd,docker shell=/bin/zsh
 
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
       become: yes
