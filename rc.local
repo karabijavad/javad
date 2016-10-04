@@ -1,1 +1,18 @@
 #!/bin/bash
+
+if $(grep -v -q disable /sys/firmware/acpi/interrupts/gpe06); then
+  echo disable > /sys/firmware/acpi/interrupts/gpe06;
+fi;
+
+for x in $(find /sys -name scaling_governor); do echo powersave > $x; done;
+
+powertop --auto-tune --quiet > /dev/null
+
+echo 0 > /sys/devices/system/cpu/cpu4/online
+echo 0 > /sys/devices/system/cpu/cpu5/online
+echo 0 > /sys/devices/system/cpu/cpu6/online
+echo 0 > /sys/devices/system/cpu/cpu7/online
+
+echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+echo 1 > /sys/bus/pci/devices/0000:01:00.1/remove
+
