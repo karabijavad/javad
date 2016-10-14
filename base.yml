@@ -60,7 +60,7 @@
         - libvirt-bin
         - openssh-server
         - dracut
-        - initramfs-tools
+	- powertop
 
     - user: name=javad groups=javad,adm,sudo,dip,plugdev,libvirtd,docker,sambashare,cdrom shell=/bin/zsh
 
