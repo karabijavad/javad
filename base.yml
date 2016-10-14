@@ -62,7 +62,7 @@
         - dracut
         - initramfs-tools
 
-    - user: name=javad groups=javad,adm,sudo,plugdev,libvirtd,docker shell=/bin/zsh
+    - user: name=javad groups=javad,adm,sudo,dip,plugdev,libvirtd,docker,sambashare,cdrom shell=/bin/zsh
 
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
       become: yes
