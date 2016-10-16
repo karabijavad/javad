@@ -59,7 +59,6 @@
         - qemu-kvm
         - libvirt-bin
         - openssh-server
-        - dracut
         - powertop
         - chromium-browser
         - fonts-hack-otf
