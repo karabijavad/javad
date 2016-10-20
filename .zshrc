@@ -15,3 +15,5 @@ eval "$(pyenv virtualenv-init -)"
 alias vi='nvim'
 alias vim='nvim'
 alias apt-get='apt-fast'
+
+export PYTHONDONTWRITEBYTECODE=1
