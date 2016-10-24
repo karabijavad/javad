@@ -10,3 +10,4 @@ endif
 set backupcopy=yes
 set expandtab
 set tabstop=2
+set noswapfile
