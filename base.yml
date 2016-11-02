@@ -7,14 +7,14 @@
     - apt_repository: repo='ppa:neovim-ppa/unstable'
 
     - apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
-    - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' state=present
+    - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ yakkety-pgdg main' state=present
 
     - apt_key: url=https://apt.dockerproject.org/gpg state=present
-    - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main' state=present
+    - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-yakkety main' state=present
 
     - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
-    - apt_repository: repo='deb https://deb.nodesource.com/node_6.x xenial main' state=present
-    - apt_repository: repo='deb-src https://deb.nodesource.com/node_6.x xenial main' state=present
+    - apt_repository: repo='deb https://deb.nodesource.com/node_6.x yakkety main' state=present
+    - apt_repository: repo='deb-src https://deb.nodesource.com/node_6.x yakkety main' state=present
 
 
     - apt: name={{item}} state=installed
