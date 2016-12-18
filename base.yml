@@ -6,12 +6,6 @@
 
     - apt_repository: repo='ppa:neovim-ppa/unstable'
 
-    - apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
-    - apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ yakkety-pgdg main' state=present
-
-    - apt_key: url=https://apt.dockerproject.org/gpg state=present
-    - apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-yakkety main' state=present
-
     - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
     - apt_repository: repo='deb https://deb.nodesource.com/node_6.x yakkety main' state=present
     - apt_repository: repo='deb-src https://deb.nodesource.com/node_6.x yakkety main' state=present
@@ -36,7 +30,7 @@
         - silversearcher-ag
         - netcat
         - nginx
-        - postgresql-9.5
+        - postgresql
         - nodejs
         - htop
         - make
@@ -55,14 +49,11 @@
         - libmysqlclient-dev
         - libpq-dev
         - apt-fast
-        - docker-engine
         - qemu-kvm
-        - libvirt-bin
         - openssh-server
         - powertop
-        - chromium-browser
         - fonts-hack-otf
-    - user: name=javad groups=javad,adm,sudo,dip,plugdev,libvirtd,docker,sambashare,cdrom shell=/bin/zsh
+    - user: name=javad groups=javad,adm,sudo,dip,plugdev shell=/bin/zsh
     - user: name=root shell=/bin/zsh
 
     - postgresql_user: name=javad role_attr_flags=SUPERUSER
@@ -110,25 +101,4 @@
 
 
     - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
-
-    - get_url:
-        url: https://github.com/docker/machine/releases/download/v0.8.0/docker-machine-Linux-x86_64
-        dest: /usr/local/bin/docker-machine
-        mode: 755
-    - get_url:
-        url: https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm
-        dest: /usr/local/bin/docker-machine-driver-kvm
-        mode: 755
-    - pip: name=docker-compose
-
-    - get_url:
-        url: http://storage.googleapis.com/kubernetes-release/release/v1.3.0/bin/linux/amd64/kubectl
-        dest: /usr/local/bin/kubectl
-        mode: 755
-    - get_url:
-        url: https://storage.googleapis.com/minikube/releases/v0.10.0/minikube-linux-amd64
-        dest: /usr/local/bin/minikube
-        mode: 755
-
-
 
