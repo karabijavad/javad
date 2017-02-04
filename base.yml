@@ -78,6 +78,11 @@
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/root/.oh-my-zsh
       become: yes
       become_user: root
+
+    - git: repo=https://github.com/airblade/vim-gitgutter.git dest=/home/javad/.janus/vim-gitgutter-master
+      become: yes
+      become_user: root
+
     - copy: src=./.root.zshrc dest=/root/.zshrc owner=root mode=0664
 
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/home/javad/.oh-my-zsh
