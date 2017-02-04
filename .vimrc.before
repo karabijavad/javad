@@ -4,3 +4,5 @@ call janus#disable_plugin('snipmate')
 call janus#disable_plugin('nrrwrgn')
 call janus#disable_plugin('zoomwin')
 call janus#disable_plugin('vroom')
+call janus#disable_plugin('vim-gitgutter')
+
