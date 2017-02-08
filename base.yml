@@ -107,3 +107,10 @@
 
     - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
 
+    - file: path=/home/javad/.config/nvim/colors state=directory
+
+    - get_url:
+        url: https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+        dest: /home/javad/.config/nvim/colors/
+        owner: javad
+
