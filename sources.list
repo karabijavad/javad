@@ -1,8 +1,8 @@
-deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ yakkety main restricted universe multiverse
-deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ yakkety-updates main restricted universe multiverse
-deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ yakkety-backports main restricted universe multiverse
+deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ zesty main restricted universe multiverse
+deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ zesty-updates main restricted universe multiverse
+deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ zesty-backports main restricted universe multiverse
 
-deb-src http://us-central1.gce.archive.ubuntu.com/ubuntu/ yakkety main restricted universe multiverse
-deb-src http://us-central1.gce.archive.ubuntu.com/ubuntu/ yakkety-updates main restricted universe multiverse
-deb-src http://us-central1.gce.archive.ubuntu.com/ubuntu/ yakkety-backports main restricted universe multiverse
+deb-src http://us-central1.gce.archive.ubuntu.com/ubuntu/ zesty main restricted universe multiverse
+deb-src http://us-central1.gce.archive.ubuntu.com/ubuntu/ zesty-updates main restricted universe multiverse
+deb-src http://us-central1.gce.archive.ubuntu.com/ubuntu/ zesty-backports main restricted universe multiverse
 
