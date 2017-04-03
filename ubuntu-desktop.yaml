@@ -21,7 +21,7 @@
     - apt_repository: repo='deb-src https://deb.nodesource.com/node_7.x yakkety main' state=present
       become: true
 
-    - apt_repository: repo='deb https://packages.microsoft.com/repos/vscode stable main' state=present
+    - apt_repository: repo='deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' state=present
       become: true
 
     - apt: name={{item}} state=installed
@@ -43,6 +43,7 @@
         - fonts-hack-otf
         - redshift
         - redshift-gtk
+        - code
       become: true
 
     - user: name=javad groups=sudo shell=/bin/zsh append=yes
