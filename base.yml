@@ -2,8 +2,8 @@
   tasks:
     - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
 
-    - apt_repository: repo='ppa:neovim-ppa/unstable'
-    - apt_repository: repo='ppa:saiarcot895/myppa'
+    - apt_repository:
+        repo: ppa:neovim-ppa/unstable
 
     - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
     - apt_repository: repo='deb https://deb.nodesource.com/node_7.x yakkety main' state=present
@@ -27,7 +27,6 @@
         - build-essential
         - powertop
         - fonts-hack-otf
-        - apt-fast
 
     - user: name=javad groups=sudo shell=/bin/zsh append=yes
     - user: name=root shell=/bin/zsh
