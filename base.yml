@@ -3,6 +3,7 @@
     - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
 
     - apt_repository: repo='ppa:neovim-ppa/unstable'
+    - apt_repository: repo='ppa:saiarcot895/myppa'
 
     - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
     - apt_repository: repo='deb https://deb.nodesource.com/node_7.x yakkety main' state=present
@@ -39,6 +40,7 @@
     - git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes
       become: yes
       become_user: javad
+      depth: 1
     - command: "rake"
       become: yes
       become_user: javad
@@ -52,18 +54,22 @@
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/root/.oh-my-zsh
       become: yes
       become_user: root
+      depth: 1
     - copy: src=./.root.zshrc dest=/root/.zshrc owner=root mode=0664
 
     - git: repo=https://github.com/airblade/vim-gitgutter.git dest=/home/javad/.janus/vim-gitgutter-master
       become: yes
       become_user: javad
+      depth: 1
     - git: repo=https://github.com/mxw/vim-jsx.git dest=/home/javad/.janus/vim-jsx/
       become: yes
       become_user: javad
+      depth: 1
 
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/home/javad/.oh-my-zsh
       become: yes
       become_user: javad
+      depth: 1
     - copy: src=./.zshrc dest=/home/javad/.zshrc owner=javad mode=0664
 
     - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
