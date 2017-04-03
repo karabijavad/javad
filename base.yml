@@ -1,14 +1,25 @@
 - hosts: localhost
   tasks:
     - copy: src=./sources.list dest=/etc/apt/sources.list owner=root mode=0664
+      become: true
 
     - apt_repository:
         repo: ppa:neovim-ppa/unstable
+      become: true
 
     - apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+      become: true
     - apt_repository: repo='deb https://deb.nodesource.com/node_7.x yakkety main' state=present
-    - apt_repository: repo='deb-src https://deb.nodesource.com/node_7.x yakkety main' state=present
+      become: true
 
+
+    - apt_key: url=https://packages.microsoft.com/keys/microsoft.asc state=present
+      become: true
+    - apt_repository: repo='deb-src https://deb.nodesource.com/node_7.x yakkety main' state=present
+      become: true
+
+    - apt_repository: repo='deb https://packages.microsoft.com/repos/vscode stable main' state=present
+      become: true
 
     - apt: name={{item}} state=installed
       with_items:
@@ -29,63 +40,84 @@
         - fonts-hack-otf
         - redshift
         - redshift-gtk
+      become: true
 
     - user: name=javad groups=sudo shell=/bin/zsh append=yes
+      become: true
     - user: name=root shell=/bin/zsh
+      become: true
 
     - copy: src=./.tmux.conf dest=/home/javad/.tmux.conf owner=javad mode=0664
+      become: true
+      become_user: javad
 
     - git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes
-      become: yes
+      become: true
       become_user: javad
     - command: "rake"
-      become: yes
+      become: true
       become_user: javad
       args:
         chdir: "/home/javad/.vim"
     - copy: src=./.vimrc.before dest=/home/javad/.vimrc.before owner=javad mode=0664
+      become: true
+      become_user: javad
     - copy: src=./.vimrc.after dest=/home/javad/.vimrc.after owner=javad mode=0664
+      become: true
+      become_user: javad
     - file: path=/home/javad/.config/nvim state=directory mode=0755
+      become: true
+      become_user: javad
     - file: src=/home/javad/.vimrc dest=/home/javad/.config/nvim/init.vim owner=javad state=link
+      become: true
+      become_user: javad
 
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/root/.oh-my-zsh
-      become: yes
-      become_user: root
+      become: true
     - copy: src=./.root.zshrc dest=/root/.zshrc owner=root mode=0664
+      become: true
 
     - git: repo=https://github.com/airblade/vim-gitgutter.git dest=/home/javad/.janus/vim-gitgutter-master
-      become: yes
+      become: true
       become_user: javad
     - git: repo=https://github.com/mxw/vim-jsx.git dest=/home/javad/.janus/vim-jsx/
-      become: yes
+      become: true
       become_user: javad
 
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/home/javad/.oh-my-zsh
-      become: yes
+      become: true
       become_user: javad
     - copy: src=./.zshrc dest=/home/javad/.zshrc owner=javad mode=0664
+      become: true
+      become_user: javad
 
     - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
+      become: true
+      become_user: javad
 
     - file: path=/home/javad/.config/nvim/colors state=directory
+      become: true
+      become_user: javad
 
     - get_url:
         url: https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
         dest: /home/javad/.config/nvim/colors/
         owner: javad
+      become: true
+      become_user: javad
 
-    #- systemd:
-        #name: redshift
-        #enabled: yes
-        #state: started
-        #user: yes
-      #become: yes
-      #become_user: javad
-    #- systemd:
-        #name: redshift-gtk
-        #enabled: yes
-        #state: started
-        #user: yes
-      #become: yes
-      #become_user: javad
+    - systemd:
+        name: redshift
+        enabled: true
+        state: started
+        user: true
+      become: true
+      become_user: javad
+    - systemd:
+        name: redshift-gtk
+        enabled: true
+        state: started
+        user: true
+      become: true
+      become_user: javad
 
