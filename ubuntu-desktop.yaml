@@ -47,7 +47,7 @@
     - copy: src=./etc/sudoers.d/javad dest=/etc/sudoers.d/javad owner=root mode=0664
       become: true
 
-    - copy: src=./.tmux.conf dest=/home/javad/.tmux.conf owner=javad mode=0664
+    - copy: src=./home/javad/.tmux.conf dest=/home/javad/.tmux.conf owner=javad mode=0664
       become: true
       become_user: javad
 
@@ -59,10 +59,10 @@
       become_user: javad
       args:
         chdir: "/home/javad/.vim"
-    - copy: src=./.vimrc.before dest=/home/javad/.vimrc.before owner=javad mode=0664
+    - copy: src=./home/javad/.vimrc.before dest=/home/javad/.vimrc.before owner=javad mode=0664
       become: true
       become_user: javad
-    - copy: src=./.vimrc.after dest=/home/javad/.vimrc.after owner=javad mode=0664
+    - copy: src=./home/javad/.vimrc.after dest=/home/javad/.vimrc.after owner=javad mode=0664
       become: true
       become_user: javad
     - file: path=/home/javad/.config/nvim state=directory mode=0755
@@ -82,11 +82,11 @@
     - git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=/home/javad/.oh-my-zsh
       become: true
       become_user: javad
-    - copy: src=./.zshrc dest=/home/javad/.zshrc owner=javad mode=0664
+    - copy: src=./home/javad/.zshrc dest=/home/javad/.zshrc owner=javad mode=0664
       become: true
       become_user: javad
 
-    - copy: src=./.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
+    - copy: src=./home/javad/.gitconfig dest=/home/javad/.gitconfig owner=javad mode=0664
       become: true
       become_user: javad
 
