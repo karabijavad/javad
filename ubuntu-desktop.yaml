@@ -3,6 +3,9 @@
     - copy: src=./etc/apt/sources.list dest=/etc/apt/sources.list owner=root mode=0664
       become: true
 
+    - copy: src=./etc/udev/rules.d/javad.rules dest=/etc/udev/rules.d/javad.rules owner=root mode=0664
+      become: true
+
     - apt_repository:
         repo: ppa:neovim-ppa/unstable
       become: true
