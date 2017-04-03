@@ -74,12 +74,18 @@
         dest: /home/javad/.config/nvim/colors/
         owner: javad
 
-    - systemd:
-        name: redshift
-        enabled: yes
-        state: started
-    - systemd:
-        name: redshift-gtk
-        enabled: yes
-        state: started
+    #- systemd:
+        #name: redshift
+        #enabled: yes
+        #state: started
+        #user: yes
+      #become: yes
+      #become_user: javad
+    #- systemd:
+        #name: redshift-gtk
+        #enabled: yes
+        #state: started
+        #user: yes
+      #become: yes
+      #become_user: javad
 
