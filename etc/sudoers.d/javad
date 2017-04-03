@@ -1,1 +1,1 @@
-javad  ALL=(ALL:ALL) ALL
+javad  ALL=(ALL:ALL) NOPASSWD:ALL
