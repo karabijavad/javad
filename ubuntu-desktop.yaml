@@ -54,14 +54,14 @@
       become: true
       become_user: javad
 
-    #- git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes depth=1
-      #become: true
-      #become_user: javad
-    #- command: "rake"
-      #become: true
-      #become_user: javad
-      #args:
-        #chdir: "/home/javad/.vim"
+    - git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes depth=1 update=no
+      become: true
+      become_user: javad
+    - command: "rake"
+      become: true
+      become_user: javad
+      args:
+        chdir: "/home/javad/.vim"
     - copy: src=./.vimrc.before dest=/home/javad/.vimrc.before owner=javad mode=0664
       become: true
       become_user: javad
