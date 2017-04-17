@@ -248,3 +248,6 @@ tmux_conf_theme_left_separator_sub=''
 tmux_conf_theme_right_separator_main=''
 tmux_conf_theme_right_separator_sub=''
 
+bind -n S-Right next-window
+bind -n S-Left previous-window
+
