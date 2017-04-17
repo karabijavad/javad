@@ -51,10 +51,6 @@
     - copy: src=./etc/sudoers.d/javad dest=/etc/sudoers.d/javad owner=root mode=0664
       become: true
 
-    - copy: src=./home/javad/.tmux.conf dest=/home/javad/.tmux.conf owner=javad mode=0664
-      become: true
-      become_user: javad
-
     - git: repo=https://github.com/carlhuda/janus.git dest=/home/javad/.vim recursive=yes force=yes depth=1 update=no
       become: true
       become_user: javad
@@ -128,4 +124,14 @@
         name: fs.file-max
         value: 500000
       become: true
+
+    - git: repo=https://github.com/gpakosz/.tmux.git dest=/home/javad/.tmux
+      become: true
+      become_user: javad
+    - file: src=.tmux/.tmux.conf dest=~/.tmux.conf owner=javad state=link
+      become: true
+      become_user: javad
+    - copy: src=.tmux.conf.local dest=~/.tmux.conf.local owner=javad
+      become: true
+      become_user: javad
 
